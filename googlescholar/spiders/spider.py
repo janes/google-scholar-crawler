@@ -1,5 +1,4 @@
-import re
-import os
+import re, sys, os
 import json
 from urlparse import urlparse
 import urllib
@@ -21,6 +20,9 @@ from googlescholar.items import *
 from misc.log import *
 from misc.spider import CommonSpider
 
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 def _monkey_patching_HTTPClientParser_statusReceived():
     """
@@ -44,9 +46,49 @@ class googlescholarSpider(CommonSpider):
     name = "googlescholar"
     allowed_domains = ["google.com"]
     base_url = 'http://scholar.google.com/scholar?q='
-    __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-    lines = [line.rstrip('\n') for line in open(os.path.join(os.path.dirname(__file__), 'papers.txt'))]
+    # __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+    # lines = [line.rstrip('\n') for line in open(os.path.join(os.path.dirname(__file__), 'papers.txt'))]
     
+    lines = [
+        'BPNA Coverage-Based Approach to Recommendation Diversity On Similarity Graph',
+        'Ask the GRU: Multi-task Learning for Deep Text Recommendations',
+        'Bayesian Low-Rank Determinantal Point Processes',
+        'Convolutional Matrix Factorization for Document Context-Aware Recommendation',
+        'Crowd-Based Personalized Natural Language Explanations for Recommendations',
+        'Deep Neural Networks for YouTube Recommendations',
+        'Discovering What Youre Known For: A Contextual Poisson Factorization Approach',
+        'Domain-Aware Grade Prediction and Top-n Course Recommendation',
+        'Efficient Bayesian Methods for Graph-based Recommendation',
+        'Factorization Meets the Item Embedding: Regularizing Matrix Factorization with Item Co-occurrence',
+        'Field-aware Factorization Machines for CTR Prediction',
+        'Fifty Shades of Ratings: How to Benefit from a Negative Feedback in Top-N Recommendations Tasks',
+        'Gaze Prediction for Recommender Systems',
+        'Guided Walk: A Scalable Recommendation Algorithm for Complex Heterogeneous Social Networks',
+        'Joint User Modeling across Aligned Heterogeneous Sites',
+        'Latent Factor Representations for Cold-Start Video Recommendation',
+        'Learning Hierarchical Feature Influence for Recommendation by Recursive Regularization',
+        'BPNLocal Item-Item Models For Top-N Recommendation',
+        'Mechanism Design for Personalized Recommender Systems',
+        'Meta-Prod2Vec Product Embeddings Using Side-Information for Recommendation',
+        'Mood-Sensitive Truth Discovery For Reliable Recommendation Systems in Social Sensing',
+        'Parallel Recurrent Neural Network Architectures for Feature-rich Session-based Recommendations',
+        'Personalized Recommendations using Knowledge Graphs: A Probabilistic Logic Programming Approach',
+        'Recommending New Items to Ephemeral Groups Using Contextual User Influence',
+        'Representation Learning for Homophilic Preferences',
+        'STAR: Semiring Trust Inference for Trust-Aware Social Recommenders',
+        'BPNTAPER: A Contextual Tensor-Based Approach for Personalized Expert Recommendation',
+        'Using Navigation to Improve Recommendations in Real-Time',
+        'Vista: A Visually, Socially, and Temporally-aware Model for Artistic Recommendation',
+        'Algorithms Aside: Recommendation As The Lens Of Life',
+        'Behaviorism is Not Enough',
+        'HCI for Recommender Systems: the Past, the Present and the Future',
+        'Human-Recommender Systems: From Benchmark Data to Benchmark Cognitive Models',
+        'Past, Present, and Future of Recommender Systems: An Industry Perspective',
+        'Recommendations with a Purpose',
+        'Recommender Systems for Self-Actualization',
+        'Recommender Systems with Personality',
+        'The Contextual Turn: from Context-Aware to Context-Driven Recommender Systems'
+    ]
     start_urls = [ base_url + line for line in lines]
     
     rules = [
