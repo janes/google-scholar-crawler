@@ -27,7 +27,7 @@ DOWNLOADER_MIDDLEWARES = {
 }
 
 ITEM_PIPELINES = {
-    #'googlescholar.pipelines.JsonWithEncodingPipeline': 300,
+    'googlescholar.pipelines.JsonWithEncodingPipeline': 300,
     #'googlescholar.pipelines.RedisPipeline': 301,
 }
 
