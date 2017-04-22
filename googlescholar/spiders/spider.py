@@ -145,11 +145,11 @@ class googlescholarSpider(CommonSpider):
             pp.pprint(items)
         import pdb; pdb.set_trace()
         # return self.parse_with_rules(response, self.css_rules, googlescholarItem)
-
-        for item in items:
-            if item['related-url'] == '' or item['related-type'] != '[PDF]':
-                continue
-            url = item['related-url']
-            info('pdf-url: ' + url)
-            yield Request(url, callback=self.save_pdf)
+        yield items;
+        # for item in items:
+        #     if item['related-url'] == '' or item['related-type'] != '[PDF]':
+        #         continue
+        #     url = item['related-url']
+        #     info('pdf-url: ' + url)
+        #     yield Request(url, callback=self.save_pdf)
 
