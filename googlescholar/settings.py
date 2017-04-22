@@ -27,11 +27,10 @@ DOWNLOADER_MIDDLEWARES = {
 }
 
 ITEM_PIPELINES = {
-    'googlescholar.pipelines.MongoDBPipeline': 300,
+    'googlescholar.pipelines.JsonWithEncodingPipeline': 300,
     #'googlescholar.pipelines.RedisPipeline': 301,
 }
 
 LOG_LEVEL = 'DEBUG'
 
 DOWNLOAD_DELAY = 3
-

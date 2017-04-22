@@ -145,7 +145,8 @@ class googlescholarSpider(CommonSpider):
             pp.pprint(items)
         import pdb; pdb.set_trace()
         # return self.parse_with_rules(response, self.css_rules, googlescholarItem)
-        yield items;
+        for item in items:
+            yield item
         # for item in items:
         #     if item['related-url'] == '' or item['related-type'] != '[PDF]':
         #         continue
