@@ -45,7 +45,7 @@ class googlescholarSpider(CommonSpider):
     allowed_domains = ["google.com"]
     base_url = 'http://scholar.google.com/scholar?q='
     __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-    lines = [line.rstrip('\n') for line in open(os.path.join(__location__, 'papers.txt'))]
+    lines = [line.rstrip('\n') for line in open(os.path.join(os.path.dirname(__file__), 'papers.txt'))]
     
     start_urls = [ base_url + line for line in lines]
     
